@@ -15,6 +15,8 @@ class UserProfile(models.Model):
     image = models.ImageField(blank=True)
     cover = models.ImageField(blank=True)
     bio = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     gender = models.CharField(
         max_length=20,
         choices= gender_choices,
