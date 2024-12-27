@@ -1,8 +1,8 @@
 from django.db import models
 
 gender_choices = (
-    ("MALE","male"),
-    ("FEMALE","female"),
+    ("MALE", "male"),
+    ("FEMALE", "female"),
 )
 
 
@@ -12,16 +12,15 @@ class UserProfile(models.Model):
     last_name = models.CharField(max_length=256)
     email = models.CharField(max_length=256)
     password = models.CharField(max_length=100)
-    image = models.ImageField(blank=True)
-    cover = models.ImageField(blank=True)
+    image = models.ImageField(upload_to= 'profile_images/',blank=True)
+    cover = models.ImageField(upload_to='profile_covers/',blank=True)
     bio = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     gender = models.CharField(
         max_length=20,
-        choices= gender_choices,
+        choices=gender_choices
     )
 
-    
-
-    
+    def __str__(self):
+        return self.username
