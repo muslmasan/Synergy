@@ -22,7 +22,7 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework.authtoken.views import obtain_auth_token
-
+from home.views import CustomAuthToken
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -45,6 +45,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('community/',include('community.urls') ),
     path('user/', include('home.urls')),
-    path('api-token-auth/', obtain_auth_token),
+    path('api-token-auth/', CustomAuthToken.as_view()),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
