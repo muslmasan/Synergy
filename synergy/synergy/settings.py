@@ -75,6 +75,15 @@ TEMPLATES = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',  # This ensures the user needs to be authenticated
+    ],
+}
+
 WSGI_APPLICATION = 'synergy.wsgi.application'
 
 
