@@ -15,7 +15,8 @@ class UserProfile(AbstractUser):
     updated_at = models.DateTimeField(auto_now=True)
     gender = models.CharField(
         max_length=20,
-        choices=gender_choices
+        choices=gender_choices,
+        blank= True,
     )
 
     def __str__(self):
