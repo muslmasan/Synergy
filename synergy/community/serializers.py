@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Community, Comment, Post
 
+
 class CommunitySerializer(serializers.ModelSerializer):
     
     class Meta:
