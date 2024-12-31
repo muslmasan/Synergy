@@ -46,10 +46,10 @@ INSTALLED_APPS = [
     'home',
     'job',
     'community',
-    'rest_framework',
     'drf_yasg',
-    'rest_framework.authtoken',
-    'corsheaders'
+    'corsheaders',
+    'rest_framework',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -82,14 +82,21 @@ TEMPLATES = [
     },
 ]
 
-# settings.py
-
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',  # Use JWT Authentication
-    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',  
+    ),
 }
 
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),   
+    'ROTATE_REFRESH_TOKENS': True, 
+    'BLACKLIST_AFTER_ROTATION': True, 
+}
 
 WSGI_APPLICATION = 'synergy.wsgi.application'
 
@@ -123,20 +130,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
-    'ROTATE_REFRESH_TOKENS': False,
-    'BLACKLIST_AFTER_ROTATION': False,
-    'ALGORITHM': 'HS256',
-    'SIGNING_KEY': SECRET_KEY,
-    'VERIFYING_KEY': None,
-    'AUDIENCE': None,
-    'ISSUER': None,
-    'AUTH_HEADER_TYPES': ('Bearer',),
-    'USER_ID_FIELD': 'id',
-    'USER_ID_CLAIM': 'user_id',
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
