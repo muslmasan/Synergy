@@ -8,3 +8,6 @@ class UserView(viewsets.ModelViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserSerializer
 
+
+
+
