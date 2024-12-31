@@ -5,7 +5,7 @@ from rest_framework import viewsets
 # Create your views here.
 
 class UserView(viewsets.ModelViewSet):
-    queryset = UserProfile.objects.all()
+    queryset = UserProfile.objects.all( )
     serializer_class = UserSerializer
 
 
