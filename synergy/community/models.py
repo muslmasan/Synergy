@@ -14,7 +14,7 @@ categoriesChoices = (
 class Community (models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
-    icon = models.ImageField(upload_to='community_icons')
+    icon = models.ImageField(upload_to='community_icons' )
     cover = models.ImageField(upload_to='community_cover')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -34,8 +34,8 @@ class Community (models.Model):
 
 
 class Post(models.Model):
-    body = models.TextField()
-    image = models.ImageField(upload_to='post_images')
+    body = models.TextField(blank=True)
+    image = models.ImageField(upload_to='post_images', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     Community = models.ForeignKey(Community, on_delete=models.CASCADE)
