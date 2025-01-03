@@ -11,8 +11,8 @@ class UserProfile(AbstractUser):
     
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
-    image = models.BinaryField(blank=True, null=True)
-    cover = models.BinaryField(blank=True, null=True)
+    image = models.BinaryField(blank=True, null=True,editable=True)
+    cover = models.BinaryField(blank=True, null=True, editable=True)
     bio = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
